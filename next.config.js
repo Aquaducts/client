@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:8081/:path*',
+      },
+      {
+        source: '/webhook',
+        destination: 'http://localhost:8081/webhook',
+      },
+    ]
+  },
 }
-
-module.exports = nextConfig
